@@ -202,7 +202,7 @@ msgmerge:
 	for f in $(POFILES) ; do msgmerge -U $$f $(POTFILE) ; done
 
 %.mo: %.po
-	$(MSGFMT) --statistics -o $@ $<
+	$(MSGFMT) --check --statistics -o $@ $<
 
 clean-mo:
 	$(RM) $(MOFILES) po/*~
