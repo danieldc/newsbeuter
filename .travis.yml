@@ -73,7 +73,8 @@ install:
 script:
     - cd ${TRAVIS_BUILD_DIR}
     - make PROFILE=1 all test
-    - cd test && ./test --order rand
+    - ( cd test && ./test --order rand )
+    - make run-i18nspector | tee i18nspector.log && egrep '^E:' i18nspector.log && exit 1
 
 after_success:
     - cd ${TRAVIS_BUILD_DIR}
